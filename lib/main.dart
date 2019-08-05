@@ -1,6 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+import 'CounterModel.dart';
+
+void main() {
+  final counter = CounterModel();
+  final textSize = 48;
+
+  runApp(Provider<int>.value(
+          value: textSize,
+          child: ChangeNotifierProvider.value(
+            value: counter,
+            child: MyApp(),
+          ))
+//      MyApp()
+      );
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
